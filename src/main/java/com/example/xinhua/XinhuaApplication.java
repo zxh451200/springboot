@@ -14,7 +14,6 @@ public class XinhuaApplication implements ApplicationListener<ApplicationReadyEv
 
 	@Override
 	public void onApplicationEvent(ApplicationReadyEvent event) {
-		// TODO Auto-generated method stub
 		System.out.println("启动了");
 	}
 
