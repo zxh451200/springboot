@@ -9,6 +9,7 @@ import com.example.xinhua.pojo.UserPojo;
 
 @Mapper
 public interface UserMapper {
+    
     @Select("select * from user where id = #{id}")
     public UserPojo getUserById(Integer id);
 
