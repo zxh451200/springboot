@@ -1,14 +1,18 @@
 package com.example.xinhua.server.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.xinhua.mapper.UserMapper;
+import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.UserPojo;
 import com.example.xinhua.server.UserService;
 import com.example.xinhua.utils.Md5Util;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -36,6 +40,23 @@ public class UserServiceImpl implements UserService {
     public void update(UserPojo user) {
         user.setUpdateTime(LocalDateTime.now());
         userMapper.update(user);
+    }
+
+    @Override
+    public PageBean<UserPojo> getList(Integer page, Integer limit, String name) {
+
+        // 创建对象
+        PageBean<UserPojo> pd = new PageBean<>();
+
+        // 开启分页
+        PageHelper.startPage(page, limit);
+
+        List<UserPojo> userLists = userMapper.getList(name);
+
+        Page<UserPojo> p = (Page<UserPojo>) userLists;
+        pd.setTotal(p.getTotal());
+        pd.setItems(p.getResult());
+        return pd;
     }
 
 }

@@ -1,10 +1,13 @@
 package com.example.xinhua.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.UserPojo;
 
 @Mapper
@@ -20,5 +23,7 @@ public interface UserMapper {
 
     @Update("update user set name=#{name},age=#{age},update_time=#{updateTime} where id=#{id}")
     public void update(UserPojo user);
+
+    public List<UserPojo> getList(String name);
 
 }

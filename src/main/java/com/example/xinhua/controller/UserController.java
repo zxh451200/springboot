@@ -11,13 +11,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.Result;
 import com.example.xinhua.pojo.UserPojo;
+import com.example.xinhua.pojo.UserPojo.Update;
 import com.example.xinhua.server.UserService;
 import jakarta.validation.constraints.Pattern;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -27,6 +30,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    // 路径变量
     @GetMapping("/getUserById/{id}")
     public Result getUserById(@PathVariable Integer id) {
         System.out.println(1111);
@@ -71,7 +75,15 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public void update(@RequestBody @Validated UserPojo user) {
+    public void update(@RequestBody @Validated(UserPojo.Update.class) UserPojo user) {
+        System.out.println(user);
         userService.update(user);
+    }
+
+    @GetMapping("/getList/{page}/{limit}")
+    public Result<PageBean<UserPojo>> getList(@PathVariable Integer page, @PathVariable Integer limit,
+            @RequestBody String name) {
+        PageBean<UserPojo> list = userService.getList(page, limit, name);
+        return Result.success("成功", list);
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.example.xinhua.mapper.UserMapper">
+    <select id='getList' resultType="com.example.xinhua.pojo.UserPojo">
+        select * from user
+        <where></where>
+    </select>
+</mapper>
