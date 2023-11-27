@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.UserPojo;
 
 @Mapper
