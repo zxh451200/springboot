@@ -18,4 +18,8 @@ public class Result<T> {
     public static Result error(String msg) {
         return new Result(4000, msg, null);
     }
+
+    public static <E> Result error(String msg, E data) {
+        return new Result(4000, msg, data);
+    }
 }

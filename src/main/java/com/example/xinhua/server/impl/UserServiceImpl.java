@@ -50,10 +50,12 @@ public class UserServiceImpl implements UserService {
 
         // 开启分页
         PageHelper.startPage(page, limit);
-
+        
         List<UserPojo> userLists = userMapper.getList(name);
-
+        System.out.println(name);
+        System.out.println(userLists);
         Page<UserPojo> p = (Page<UserPojo>) userLists;
+        
         pd.setTotal(p.getTotal());
         pd.setItems(p.getResult());
         return pd;

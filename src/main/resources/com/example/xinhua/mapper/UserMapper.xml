@@ -4,6 +4,12 @@
 <mapper namespace="com.example.xinhua.mapper.UserMapper">
     <select id='getList' resultType="com.example.xinhua.pojo.UserPojo">
         select * from user
-        <where></where>
+        <where>
+            <if test="name != null and name != ''"> 
+                name like concat('%', #{name}, '%')
+            </if>
+        </where>
+
     </select>
+
 </mapper>

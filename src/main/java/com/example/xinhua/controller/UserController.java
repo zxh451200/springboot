@@ -3,6 +3,7 @@ package com.example.xinhua.controller;
 import com.example.xinhua.utils.JwtUtil;
 import com.example.xinhua.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,18 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.Result;
 import com.example.xinhua.pojo.UserPojo;
-import com.example.xinhua.pojo.UserPojo.Update;
 import com.example.xinhua.server.UserService;
 import jakarta.validation.constraints.Pattern;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Validated
@@ -29,6 +30,9 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     // 路径变量
     @GetMapping("/getUserById/{id}")
@@ -55,6 +59,8 @@ public class UserController {
         objectObjectHashMap.put("name", "xin");
         objectObjectHashMap.put("pwd", "123");
         String token = JwtUtil.getToken(objectObjectHashMap);
+
+        redisTemplate.opsForValue().set("token", token, 1, TimeUnit.DAYS);
         return Result.success("成功", token);
     }
 
@@ -82,8 +88,9 @@ public class UserController {
 
     @GetMapping("/getList/{page}/{limit}")
     public Result<PageBean<UserPojo>> getList(@PathVariable Integer page, @PathVariable Integer limit,
-            @RequestBody String name) {
+            @RequestParam(required = false) String name) {
         PageBean<UserPojo> list = userService.getList(page, limit, name);
         return Result.success("成功", list);
     }
+
 }

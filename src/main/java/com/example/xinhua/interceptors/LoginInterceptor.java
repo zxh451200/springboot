@@ -5,6 +5,8 @@ import com.example.xinhua.utils.JwtUtil;
 import com.example.xinhua.utils.ThreadLocalUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import com.alibaba.fastjson.JSONObject;
@@ -14,8 +16,10 @@ import java.util.Map;
 
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
+
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
         String token = request.getHeader("Authorization");
         try {
             Map<String, Object> clsims = JwtUtil.parseToken(token);
@@ -32,7 +36,8 @@ public class LoginInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+            @Nullable Exception ex) throws Exception {
         ThreadLocalUtil.remove();
     }
 
