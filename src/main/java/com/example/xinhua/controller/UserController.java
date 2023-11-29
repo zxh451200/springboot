@@ -4,6 +4,7 @@ import com.example.xinhua.utils.JwtUtil;
 import com.example.xinhua.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.xinhua.pojo.PageBean;
 import com.example.xinhua.pojo.Result;
 import com.example.xinhua.pojo.UserPojo;
-import com.example.xinhua.pojo.UserPojo.Update;
 import com.example.xinhua.server.UserService;
 import jakarta.validation.constraints.Pattern;
 
@@ -25,6 +25,7 @@ import java.util.Map;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     @Autowired
