@@ -17,23 +17,24 @@ import java.util.Map;
 @Component
 public class LoginInterceptor implements HandlerInterceptor {
 
-    @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-            throws Exception {
-        String token = request.getHeader("Authorization");
-        try {
-            Map<String, Object> clsims = JwtUtil.parseToken(token);
-            System.out.println("拦截器生效");
-            System.out.println(clsims);
-            ThreadLocalUtil.set(clsims);
-            return true;
-        } catch (Exception e) {
-            response.setStatus(400);
-            String jsonObjectStr = JSONObject.toJSONString(Result.error("拦截器拦截了"));
-            returnJson(response, jsonObjectStr);
-            return false;
-        }
-    }
+    // @Override
+    // public boolean preHandle(HttpServletRequest request, HttpServletResponse
+    // response, Object handler)
+    // throws Exception {
+    // String token = request.getHeader("Authorization");
+    // try {
+    // Map<String, Object> clsims = JwtUtil.parseToken(token);
+    // System.out.println("拦截器生效");
+    // System.out.println(clsims);
+    // ThreadLocalUtil.set(clsims);
+    // return true;
+    // } catch (Exception e) {
+    // response.setStatus(400);
+    // String jsonObjectStr = JSONObject.toJSONString(Result.error("拦截器拦截了"));
+    // returnJson(response, jsonObjectStr);
+    // return false;
+    // }
+    // }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,

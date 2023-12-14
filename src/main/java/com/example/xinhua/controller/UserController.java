@@ -5,6 +5,7 @@ import com.example.xinhua.utils.ThreadLocalUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @Validated
+@CrossOrigin
 @RequestMapping("/user")
 public class UserController {
     @Autowired
@@ -58,7 +60,7 @@ public class UserController {
         HashMap<String, Object> objectObjectHashMap = new HashMap<>();
         objectObjectHashMap.put("name", "xin");
         objectObjectHashMap.put("pwd", "123");
-        String token = JwtUtil.getToken(objectObjectHashMap);
+        String token = "Bearer " + JwtUtil.getToken(objectObjectHashMap);
 
         redisTemplate.opsForValue().set("token", token, 1, TimeUnit.DAYS);
         return Result.success("成功", token);

@@ -22,4 +22,7 @@ public class Result<T> {
     public static <E> Result error(String msg, E data) {
         return new Result(4000, msg, data);
     }
+
+    public Result(boolean b, String msg2, Object data2) {
+    }
 }
