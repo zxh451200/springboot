@@ -16,6 +16,8 @@ public class XinhuaApplication implements ApplicationListener<ApplicationReadyEv
 
     static ThreadLocal<Object> threadLocal=new ThreadLocal<>();
 
+    static  ThreadLocal inheritableThreadLocal=new InheritableThreadLocal<>();
+
 
 
     public static void main(String[] args) throws Exception {
@@ -43,6 +45,7 @@ public class XinhuaApplication implements ApplicationListener<ApplicationReadyEv
 //            throw new Exception(e);
 //        }
 
+        inheritableThreadLocal.set("我是父线程数据");
 
         //线程学习
         Thread thread1 = new Thread(() -> {
@@ -58,6 +61,8 @@ public class XinhuaApplication implements ApplicationListener<ApplicationReadyEv
                 throw new RuntimeException(e);
             }
             System.out.println("线程启动2");
+            System.out.println("子线程拿到复父线程数据:"+inheritableThreadLocal.get());
+            System.out.println("---------------------");
         },"thread-2");
 
         thread2.start();
