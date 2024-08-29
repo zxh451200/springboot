@@ -7,9 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class XinhuaApplication implements ApplicationListener<ApplicationReadyEvent> {
@@ -24,6 +27,20 @@ public class XinhuaApplication implements ApplicationListener<ApplicationReadyEv
         Logger Logger = LoggerFactory.getLogger(XinhuaApplication.class);
         Logger.info("AAA-启动前-AAA");
         SpringApplication.run(XinhuaApplication.class, args);
+
+        ArrayList<HashMap<String, Object>> hashMaps = new ArrayList<>();
+        HashMap<String, Object> hashmap1 = new HashMap<>();
+        hashmap1.put("name","xin");
+        hashmap1.put("age",18);
+        hashmap1.put("sex","男");
+        hashMaps.add(hashmap1);
+        HashMap<String, Object> hashmap2 = new HashMap<>();
+        hashmap2.put("name","hua");
+        hashmap2.put("age",19);
+        hashmap2.put("sex","男");
+        hashMaps.add(hashmap2);
+        System.out.println(hashMaps.stream().map(map->map.get("name")).collect(Collectors.toSet()));
+
 
         int[] arr = {1, 2, 3, 4, 5, 6};
         System.out.println(BinSearch(arr, 3));
