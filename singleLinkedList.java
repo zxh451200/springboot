@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
-
+// 单向链表
 public class SingleLinkedList implements Iterable<Integer> {
 
     private Node head = null;
