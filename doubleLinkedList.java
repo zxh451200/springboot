@@ -2,7 +2,6 @@ package com.xinhua.user.controller;
 
 import org.apache.ibatis.jdbc.Null;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.Iterator;
 
 // 双向链表
