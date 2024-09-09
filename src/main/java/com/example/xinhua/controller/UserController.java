@@ -95,4 +95,13 @@ public class UserController {
         return Result.success("成功", list);
     }
 
+    // 递归反转字符串
+    public void  resvStr(int index,String str){
+        if (str.length()==index){
+            return;
+        }
+        resvStr(index + 1, str);
+        System.out.println(str.charAt(index));
+    }
+
 }
