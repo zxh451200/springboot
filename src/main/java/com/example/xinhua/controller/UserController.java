@@ -120,4 +120,20 @@ public class UserController {
         }
     }
 
+    // 冒泡 right是待排的又边界
+    public void maopao(int right, int[] arr) {
+        if (right==0){
+            return;
+        }
+        for (int i = 0; i < right; i++) {
+            if (arr[i] < arr[i + 1]) {
+                int tmp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = tmp;
+                x = i;
+            }
+        }
+        maopao(x,arr);
+    }
+
 }
