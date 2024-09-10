@@ -136,4 +136,22 @@ public class UserController {
         maopao(x,arr);
     }
 
+     // 递归优化  记忆法也叫备忘录
+    public int feibonaqie(int n) {
+        int[] cache = new int[n + 1];
+        Arrays.fill(cache,-1);
+        cache[0]=0;
+        cache[1]=1;
+        return digui(n, cache);
+
+    }
+
+    public int digui(int n, int[] cache) {
+        if (n <= 1) {
+            return n;
+        }
+        cache[n] = digui(n - 1, cache) + digui(n - 2, cache);
+        return cache[n];
+    }
+
 }
