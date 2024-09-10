@@ -4,10 +4,13 @@ package com.xinhua.user.controller;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+    // ---------------
     // 调用
     // init(3);
     // print();
     // move(3,a,b,c);
+    // ---------------
+    
     static LinkedList<Integer> a = new LinkedList<>();
     static LinkedList<Integer> b = new LinkedList<>();
     static LinkedList<Integer> c = new LinkedList<>();
