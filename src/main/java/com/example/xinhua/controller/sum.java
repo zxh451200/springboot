@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class qiuhe {
+public class sum {
     //   求两数之和并返回索引值
     public static void main(String[] args) {
 

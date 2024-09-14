@@ -1,10 +1,11 @@
-public class Main {
+package com.example.xinhua.controller;
+public class Yanghuisanjiao {
     //    杨辉三角
-    public static void main(String[] args) {
-        print(10);
-        System.out.println("-----------------------------------------------------");
-        printjiyi(10);
-    }
+//    public static void main(String[] args) {
+//        print(10);
+//        System.out.println("-----------------------------------------------------");
+//        printjiyi(10);
+//    }
 
     /**
      * @param i 行坐标

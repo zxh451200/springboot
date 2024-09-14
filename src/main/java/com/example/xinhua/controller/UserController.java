@@ -21,6 +21,7 @@ import com.example.xinhua.pojo.UserPojo;
 import com.example.xinhua.server.UserService;
 import jakarta.validation.constraints.Pattern;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -118,6 +119,7 @@ public class UserController {
                 right = mid - 1;
             }
         }
+        return -1;
     }
 
     // 冒泡 right是待排的又边界
@@ -125,6 +127,7 @@ public class UserController {
         if (right==0){
             return;
         }
+        int x = 0;
         for (int i = 0; i < right; i++) {
             if (arr[i] < arr[i + 1]) {
                 int tmp = arr[i];

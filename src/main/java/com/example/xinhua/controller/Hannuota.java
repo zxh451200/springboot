@@ -1,9 +1,15 @@
-package com.xinhua.user.controller;
+package com.example.xinhua.controller;
 
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.LinkedList;
 
 @RestController
 @RequestMapping("/user")
-public class UserController {
+public class Hannuota {
     // ---------------
     // 调用
     // init(3);
