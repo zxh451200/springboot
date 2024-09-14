@@ -1,6 +1,5 @@
-package com.xinhua.user.controller;
+package com.example.xinhua.controller;
 
-import org.apache.ibatis.jdbc.Null;
 import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
